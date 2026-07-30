@@ -27,8 +27,26 @@
   }
   if (!looksLikePlainText()) return;
 
-  var rawText = document.body ? document.body.innerText : '';
-  if (!rawText.trim()) return;
+  // http(s) 下服务器常不返回 charset，Chrome 会按本地默认编码（如 GBK）误解码
+  // UTF-8 字节，导致 innerText 已是乱码。因此改为 fetch 原始字节自行解码；
+  // file:// 下 Chrome 按 UTF-8 解码正常（且 file 源无法 fetch），直接用 innerText。
+  async function getSourceText() {
+    if (location.protocol === 'file:') {
+      return document.body ? document.body.innerText : '';
+    }
+    try {
+      var buf = await (await fetch(location.href)).arrayBuffer();
+      try {
+        return new TextDecoder('utf-8', { fatal: true }).decode(buf);
+      } catch (e) {
+        return new TextDecoder('gbk').decode(buf); // 兼容 GBK 编码的旧文档
+      }
+    } catch (e) {
+      return document.body ? document.body.innerText : '';
+    }
+  }
+
+  var rawText = '';
 
   function fileName() {
     var seg = path.split('/').pop();
@@ -57,6 +75,9 @@
   async function main() {
     try {
       if (!window.MDVisRenderer) throw new Error('renderer 未加载');
+
+      rawText = await getSourceText();
+      if (!rawText.trim()) return;
 
       var html = window.MDVisRenderer.renderMarkdown(rawText);
 

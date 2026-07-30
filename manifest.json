@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "mdvis",
+  "version": "0.1.0",
+  "description": "在浏览器中直接渲染本地 Markdown 文档（file:// 与 http://localhost），支持 emoji、mermaid、代码高亮。",
+  "content_scripts": [
+    {
+      "matches": [
+        "file:///*.md",
+        "file:///*.MD",
+        "file:///*.markdown",
+        "file:///*.MARKDOWN",
+        "http://*/*.md",
+        "http://*/*.MD",
+        "http://*/*.markdown",
+        "http://*/*.MARKDOWN",
+        "https://*/*.md",
+        "https://*/*.MD",
+        "https://*/*.markdown",
+        "https://*/*.MARKDOWN"
+      ],
+      "js": [
+        "vendor/markdown-it.min.js",
+        "vendor/markdown-it-emoji.min.js",
+        "vendor/highlight.min.js",
+        "vendor/mermaid.min.js",
+        "renderer.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

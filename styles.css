@@ -1,0 +1,201 @@
+/* mdvis — 浅色主题排版样式。所有字体显式声明，不使用网络字体，杜绝样式继承混乱。 */
+
+html.mdvis-rendered {
+  background: #ffffff;
+}
+
+html.mdvis-rendered body {
+  margin: 0;
+  padding: 40px 24px 80px;
+  background: #ffffff;
+  color: #1f2328;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+}
+
+.mdvis-container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.mdvis-container h1,
+.mdvis-container h2,
+.mdvis-container h3,
+.mdvis-container h4,
+.mdvis-container h5,
+.mdvis-container h6 {
+  font-family: inherit;
+  margin: 1.5em 0 0.6em;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #1f2328;
+}
+
+.mdvis-container h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d1d9e0;
+}
+
+.mdvis-container h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d1d9e0;
+}
+
+.mdvis-container h3 { font-size: 1.25em; }
+.mdvis-container h4 { font-size: 1em; }
+.mdvis-container h5 { font-size: 0.875em; }
+.mdvis-container h6 { font-size: 0.85em; color: #59636e; }
+
+.mdvis-container p {
+  margin: 0 0 1em;
+}
+
+.mdvis-container a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+.mdvis-container a:hover {
+  text-decoration: underline;
+}
+
+.mdvis-container ul,
+.mdvis-container ol {
+  margin: 0 0 1em;
+  padding-left: 2em;
+}
+
+.mdvis-container li + li {
+  margin-top: 0.25em;
+}
+
+.mdvis-container blockquote {
+  margin: 0 0 1em;
+  padding: 0 1em;
+  color: #59636e;
+  border-left: 0.25em solid #d1d9e0;
+}
+
+.mdvis-container hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #d1d9e0;
+  border: 0;
+}
+
+.mdvis-container img {
+  max-width: 100%;
+  box-sizing: content-box;
+}
+
+/* 代码 */
+.mdvis-container code,
+.mdvis-container pre,
+.mdvis-container kbd,
+.mdvis-container samp {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+.mdvis-container code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #eff1f3;
+  border-radius: 6px;
+}
+
+.mdvis-container pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  margin: 0 0 1em;
+}
+
+.mdvis-container pre code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  background-color: transparent;
+  border-radius: 0;
+  word-break: normal;
+  white-space: pre;
+}
+
+/* 表格 */
+.mdvis-container table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 0 0 1em;
+  display: block;
+  overflow: auto;
+  max-width: 100%;
+}
+
+.mdvis-container th,
+.mdvis-container td {
+  padding: 6px 13px;
+  border: 1px solid #d1d9e0;
+}
+
+.mdvis-container th {
+  font-weight: 600;
+  background: #f6f8fa;
+}
+
+.mdvis-container tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+/* mermaid 与渲染错误 */
+.mdvis-container .mdvis-mermaid {
+  margin: 0 0 1em;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.mdvis-container .mdvis-mermaid svg {
+  max-width: 100%;
+}
+
+.mdvis-container .mdvis-error {
+  padding: 12px 16px;
+  margin: 0 0 1em;
+  border: 1px solid #f0c6cb;
+  border-radius: 6px;
+  background: #ffebe9;
+  color: #82071e;
+  font-size: 0.9em;
+}
+
+.mdvis-container .mdvis-error pre {
+  margin: 0.5em 0 0;
+  background: #fff;
+}
+
+/* highlight.js GitHub 浅色主题（本地内联，无网络请求） */
+.hljs{color:#24292e;background:#f6f8fa}
+.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#d73a49}
+.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#6f42c1}
+.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#005cc5}
+.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#032f62}
+.hljs-built_in,.hljs-symbol{color:#e36209}
+.hljs-code,.hljs-comment,.hljs-formula{color:#6a737d}
+.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#22863a}
+.hljs-subst{color:#24292e}
+.hljs-section{color:#005cc5;font-weight:700}
+.hljs-bullet{color:#735c0f}
+.hljs-emphasis{color:#24292e;font-style:italic}
+.hljs-strong{color:#24292e;font-weight:700}
+.hljs-addition{color:#22863a;background-color:#f0fff4}
+.hljs-deletion{color:#b31d28;background-color:#ffeef0}

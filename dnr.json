@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        {
+          "header": "content-type",
+          "operation": "set",
+          "value": "text/plain"
+        }
+      ]
+    },
+    "condition": {
+      "regexFilter": "\\.(ya?ml)([?#]|$)",
+      "resourceTypes": ["main_frame"]
+    }
+  }
+]

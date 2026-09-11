@@ -199,3 +199,99 @@ html.mdvis-rendered body {
 .hljs-strong{color:#24292e;font-weight:700}
 .hljs-addition{color:#22863a;background-color:#f0fff4}
 .hljs-deletion{color:#b31d28;background-color:#ffeef0}
+
+/* ---------- YAML：结构树 ---------- */
+.mdvis-yaml-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d1d9e0;
+}
+
+.mdvis-yaml-tab {
+  padding: 4px 12px;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  background: #fff;
+  color: #1f2328;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mdvis-yaml-tab:hover { background: #eff1f3; }
+
+.mdvis-yaml-tab.is-active {
+  background: #0969da;
+  border-color: #0969da;
+  color: #fff;
+}
+
+.mdvis-yaml-meta {
+  margin-left: auto;
+  color: #59636e;
+  font-size: 12px;
+}
+
+.mdvis-yaml-node { margin: 2px 0; }
+
+.mdvis-yaml-node > summary {
+  cursor: pointer;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+.mdvis-yaml-node > summary:hover { background: #f6f8fa; }
+
+.mdvis-yaml-children {
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #e6eaee;
+}
+
+.mdvis-yaml-leaf {
+  padding: 1px 4px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.mdvis-yk { color: #0a3069; }
+.mdvis-yk-index { color: #6a737d; }
+.mdvis-yaml-colon { color: #6a737d; }
+
+.mdvis-yaml-count {
+  margin-left: 6px;
+  color: #8b949e;
+  font-size: 11px;
+}
+
+.mdvis-yv-str { color: #032f62; }
+.mdvis-yv-num { color: #005cc5; }
+.mdvis-yv-bool { color: #005cc5; font-weight: 600; }
+.mdvis-yv-null { color: #8b949e; font-style: italic; }
+.mdvis-yv-empty { color: #8b949e; }
+
+.mdvis-yv-block {
+  display: inline-block;
+  vertical-align: top;
+  white-space: pre-wrap;
+}
+
+.mdvis-yaml-cycle { color: #8b949e; font-style: italic; }
+
+.mdvis-yaml-doc { margin: 0 0 18px; }
+
+.mdvis-yaml-doc-title {
+  margin: 8px 0 4px;
+  color: #59636e;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+pre.mdvis-yaml-source { margin: 0 0 1em; }

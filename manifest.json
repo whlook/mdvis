@@ -1,29 +1,73 @@
 {
   "manifest_version": 3,
   "name": "mdvis",
-  "version": "0.1.0",
-  "description": "在浏览器中直接渲染本地 Markdown 文档（file:// 与 http://localhost），支持 emoji、mermaid、代码高亮。",
+  "version": "0.2.0",
+  "description": "在浏览器中直接渲染本地 Markdown / YAML 文档，并把 PyTorch profiler trace 一键送进 Perfetto UI。",
+  "permissions": [
+    "downloads",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "mdvis：查看本地文件（YAML / trace / Markdown）"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "yaml-as-text",
+        "enabled": true,
+        "path": "dnr.json"
+      }
+    ]
+  },
   "content_scripts": [
+    {
+      "matches": ["file:///*"],
+      "js": ["detect.js", "filelinks.js"],
+      "run_at": "document_start"
+    },
     {
       "matches": [
         "file:///*.md",
         "file:///*.MD",
         "file:///*.markdown",
         "file:///*.MARKDOWN",
+        "file:///*.yaml",
+        "file:///*.yml",
+        "file:///*.YAML",
+        "file:///*.YML",
+        "file:///*.json",
         "http://*/*.md",
         "http://*/*.MD",
         "http://*/*.markdown",
         "http://*/*.MARKDOWN",
+        "http://*/*.yaml",
+        "http://*/*.yml",
+        "http://*/*.YAML",
+        "http://*/*.YML",
+        "http://*/*.json",
         "https://*/*.md",
         "https://*/*.MD",
         "https://*/*.markdown",
-        "https://*/*.MARKDOWN"
+        "https://*/*.MARKDOWN",
+        "https://*/*.yaml",
+        "https://*/*.yml",
+        "https://*/*.YAML",
+        "https://*/*.YML",
+        "https://*/*.json"
       ],
       "js": [
+        "detect.js",
         "vendor/markdown-it.min.js",
         "vendor/markdown-it-emoji.min.js",
         "vendor/highlight.min.js",
         "vendor/mermaid.min.js",
+        "vendor/js-yaml.min.js",
         "renderer.js",
         "content.js"
       ],

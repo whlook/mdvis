@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>mdvis viewer</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* viewer 页专属布局（扩展页 CSP 允许内联样式，脚本必须是独立文件） */
+    html, body { height: 100%; }
+    body.mdvis-viewer {
+      margin: 0;
+      background: #fff;
+      color: #1f2328;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mdvis-viewer-bar {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 14px;
+      background: #f6f8fa;
+      border-bottom: 1px solid #d1d9e0;
+      font-size: 13px;
+    }
+    .mdvis-viewer-name { font-weight: 600; max-width: 45vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .mdvis-viewer-status { color: #59636e; flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .mdvis-viewer-status.is-error { color: #82071e; }
+    .mdvis-viewer-bar button {
+      padding: 4px 10px;
+      border: 1px solid #d1d9e0;
+      border-radius: 6px;
+      background: #fff;
+      color: #1f2328;
+      font: inherit;
+      cursor: pointer;
+    }
+    .mdvis-viewer-bar button:hover { background: #eff1f3; }
+    .mdvis-viewer-stage { flex: 1 1 auto; position: relative; overflow: auto; }
+    .mdvis-viewer-doc { padding: 24px 24px 64px; }
+    .mdvis-viewer-doc .mdvis-container { padding: 0; }
+    iframe.mdvis-perfetto {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+    .mdvis-viewer-drop {
+      max-width: 620px;
+      margin: 8vh auto;
+      padding: 48px 32px;
+      border: 2px dashed #d1d9e0;
+      border-radius: 12px;
+      text-align: center;
+      color: #59636e;
+      line-height: 1.9;
+    }
+    .mdvis-viewer-drop h1 { margin: 0 0 8px; font-size: 20px; color: #1f2328; }
+    .mdvis-viewer-drop code { background: #eff1f3; padding: 1px 5px; border-radius: 4px; font-size: 90%; }
+    body.mdvis-dragging .mdvis-viewer-stage { outline: 3px dashed #0969da; outline-offset: -8px; }
+  </style>
+</head>
+<body class="mdvis-viewer">
+  <header class="mdvis-viewer-bar">
+    <span class="mdvis-viewer-name" id="name">mdvis viewer</span>
+    <span class="mdvis-viewer-status" id="status"></span>
+    <button type="button" id="pick">选择文件…</button>
+    <button type="button" id="perfetto-tab" hidden>在 ui.perfetto.dev 打开</button>
+  </header>
+  <main class="mdvis-viewer-stage" id="stage"></main>
+  <input type="file" id="file" hidden>
+
+  <script src="vendor/markdown-it.min.js"></script>
+  <script src="vendor/markdown-it-emoji.min.js"></script>
+  <script src="vendor/highlight.min.js"></script>
+  <script src="vendor/mermaid.min.js"></script>
+  <script src="vendor/js-yaml.min.js"></script>
+  <script src="detect.js"></script>
+  <script src="renderer.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>
